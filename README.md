@@ -29,7 +29,6 @@ The vault uses the **PARA Method** for structure and enforces strict frontmatter
 ### Frontmatter Standard
 Every markdown note must include a completed frontmatter block. The `summary` field is mandatory to minimize token consumption during local RAG searches.
 
-```yaml
 ---
 title: "Note Title"
 type: project | task | resource | journal | area
