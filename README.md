@@ -49,8 +49,6 @@ setx OLLAMA_MODELS "D:\local agent1.0\OllamaModels" /M
 
 ## 🔄 4. The Rolling Memory Compaction Pipeline
 Because raw local language engines require reprocessing the entire sequential conversational history with every consecutive turn, the strict 4GB VRAM limit causes context overflow and conversational breakdown after roughly 10 interactions.
-+------------------+         +----------------------------+         +------------------+
-|  IDE / UI Client |  ---->  | Custom Proxy: localhost:11435 |  ---->  | Local Ollama API |
-| (VS Code / UI)   |         | 3-Layer Compaction Engine  |         | localhost:11434  |
-+------------------+         +----------------------------+         +------------------+
+IDE / UI Client (VS Code / UI) ----> Custom Proxy: localhost:11435 (3-Layer Compaction Engine) ----> Local Ollama API (localhost:11434)
+
 To resolve this limitation, a local **Python custom proxy** runs persistently on `localhost:11435`. It acts as an intelligent intermediary firewall between your developer IDE and the backend Ollama engine server running on `localhost:11434`.
