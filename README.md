@@ -53,3 +53,12 @@ Because raw local language engines require reprocessing the entire sequential co
 IDE / UI Client (VS Code / UI) ----> Custom Proxy: localhost:11435 (3-Layer Compaction Engine) ----> Local Ollama API (localhost:11434)
 
 To resolve this limitation, a local **Python custom proxy** runs persistently on `localhost:11435`. It acts as an intelligent intermediary firewall between your developer IDE and the backend Ollama engine server running on `localhost:11434`.
+
+## 💻 5. IDE Extension Framework (VS Code Pipeline)
+The workspace runs an asymmetric, dual-copilot runtime configuration designed to maximize local privacy while preserving access to standard cloud models when needed:
+
+* **GitHub Copilot Extension:** Maintained solely to route complex development operations out to high-capacity cloud models.
+* **Continue.dev Extension:** Installed as the core gateway for offline AI operations.
+* **Routing Redirection:** The `config.json` inside the Continue extension is modified to bypass direct Ollama routing and point directly to the proxy engine at `http://localhost:11435`. 
+
+Both extensions operate side-by-side inside the editor layout with zero resource locking or system architecture conflicts.
