@@ -1,0 +1,15 @@
+# Hard ignore for local models and data directories
+OllamaModels/
+D:\local agent1.0\local agent setup\
+*.gguf
+
+# Python operational bloat
+__pycache__/
+*.pyc
+.env
+venv/
+.venv/
+
+# Obsidian metadata configurations
+.obsidian/
+*-session.md
