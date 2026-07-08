@@ -29,13 +29,19 @@ The vault uses the **PARA Method** for structure and enforces strict frontmatter
 ### Frontmatter Standard
 Every markdown note must include a completed frontmatter block. The `summary` field is mandatory to minimize token consumption during local RAG searches.
 
----
-title: "Note Title"
-type: project | task | resource | journal | area
-status: active | todo | complete | archived
-created: YYYY-MM-DD
-updated: YYYY-MM-DD
-tags: []
-summary: "One sentence abstract — critical for AI readability."
-related: []
----
+## 🧠 3. Local AI Stack & VRAM Optimizations (Ollama)
+The local engine layer handles language processing locally via an independent background runtime.
+
+### Active Model Manifest
+* **Primary Developer / Coding Model:** `qwen2.5-coder:3b` — Specialized low-latency assistant for syntax, refactoring, and file logic.
+* **Reasoning, Processing & Compression:** `deepseek-r1:1.5b` (Migration to `phi4-mini` currently pending resolution of the hardware framework blocker).
+
+### System VRAM & KV Cache Optimization
+To prevent heavy CPU memory spillover and unlock maximum execution bounds on the restricted 4GB laptop GPU, the Windows environment profile variables must be configured permanently. 
+
+Run the following commands in **Command Prompt (Admin)**:
+
+```cmd
+setx OLLAMA_FLASH_ATTENTION "1" /M
+setx OLLAMA_KV_CACHE_TYPE "q8_0" /M
+setx OLLAMA_MODELS "D:\local agent1.0\OllamaModels" /M
