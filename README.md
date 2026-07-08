@@ -45,6 +45,7 @@ Run the following commands in **Command Prompt (Admin)**:
 setx OLLAMA_FLASH_ATTENTION "1" /M
 setx OLLAMA_KV_CACHE_TYPE "q8_0" /M
 setx OLLAMA_MODELS "D:\local agent1.0\OllamaModels" /M
+```
 
 ## 🔄 4. The Rolling Memory Compaction Pipeline
 Because raw local language engines require reprocessing the entire sequential conversational history with every consecutive turn, the strict 4GB VRAM limit causes context overflow and conversational breakdown after roughly 10 interactions.
